@@ -4,9 +4,75 @@ import java.io.FileInputStream;
 import java.io.InputStream;
 
 public class TSScanner {
-
+	
+	private static String MAP_COMMAND = "map";
+	private static String PAT_COMMAND = "pat";
+	
 	public static void main(String[] args) throws Exception {
-		map(args[0]);
+		String command;
+		String filePath;
+		
+		if(args.length == 2) {
+			command = args[0].trim();
+			filePath = args[1].trim();
+			
+			if(command.equals(MAP_COMMAND)) {
+				System.out.println("Mapping " + filePath + " ...");
+				map(filePath);
+			} else if(command.equals(PAT_COMMAND)) {
+				pat(filePath);
+			} else {
+				System.out.println("Please choose a valid action before file path:");
+				System.out.println("              map");
+				System.out.println("              pat");
+			}
+		} else {
+			System.out.println("TSScanner's correct usage:");
+			System.out.println("   <command> <file-path>");
+		}
+	}
+
+	
+	private static void pat(String stream) throws Exception {
+		InputStream input = getInputStream(stream);
+		byte[] buffer = new byte[188];
+		
+		while(readPacket(input, buffer)) {
+			if(isPATPacket(buffer)) {
+				break;
+			}
+		}
+		
+		showPAT(buffer);
+	}
+	
+
+	
+	private static void showPAT(byte[] buffer) throws Exception {
+		int n = (sectionLength(buffer) - 9) / 4;
+
+		int index = 13;
+		
+		System.out.println("--------------------------------");
+		System.out.println("-------------- PAT -------------");
+		System.out.println("--------------------------------");		
+		for(int i = 0; i < n; i++) {
+			int programNumber = (buffer[index] << 8 | buffer[index+1]) & 0x0000FFFF;
+			int pid = (buffer[index+2] << 8 | buffer[index+3]) & 0x00001FFF;
+			
+			System.out.printf("    Program Number: 0x%4X\n" , programNumber);
+			System.out.printf("             - PID: 0x%4X\n" , pid);
+			System.out.println("--------------------------------");
+			
+			index += 4;
+		}
+	}
+
+	private static int sectionLength(byte[] buffer) {
+		int bytes = buffer[6] << 8 | buffer[7];
+		int mask = 0x00000FFF;
+		
+		return bytes & mask;
 	}
 
 	private static void map(String stream) throws Exception {
