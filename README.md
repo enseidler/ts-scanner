@@ -10,8 +10,9 @@ With ``TSScanner`` you'll be able to analyze and detect certain parts of the "TS
 
 
 ### Download latest release
-
 [![GitHub release](https://img.shields.io/github/release/enseidler/ts-scanner.svg)](https://github.com/enseidler/ts-scanner/releases/latest)
+
+(You have to choose either files "tar.gz" or "zip" and extract within directory you want)
 
 
 ### Usage (since v1.1.1)
@@ -19,7 +20,7 @@ With ``TSScanner`` you'll be able to analyze and detect certain parts of the "TS
 ``` shell
  ./tscan <command> <file-path>
 ```
-(before start to use this way, please give some execute permissions ``chmod +x tscan``)
+(Before start to use this way, please give some execute permissions ``chmod +x tscan``)
 
 
 ### Old fashion way
