@@ -4,24 +4,35 @@ With ``TSScanner`` you'll be able to analyze and detect certain parts of the "TS
 
 ***
 
+
 ###Requirements
 - Java 1.5 (or newer)
+
 
 ### Download latest release
 
 [![GitHub release](https://img.shields.io/github/release/enseidler/ts-scanner.svg)](https://github.com/enseidler/ts-scanner/releases/latest)
 
-### Usage
+
+### Usage (since v1.1.1)
+- New easy way to use has been added:
+``` shell
+ ./tscan <command> <file-path>
+```
+(before start to use this way, please give some execute permissions ``chmod +x tscan``)
+
+
+### Old fashion way
 - Mapping ts packages visually
 ``` shell
-  java -jar TSScanner-1.1.0.jar map <file-path>
+  java -jar TSScanner.jar map <file-path>
 ```
 
 - Showing PAT table
 ``` shell
-  java -jar TSScanner-1.1.0.jar pat <file-path>
+  java -jar TSScanner.jar pat <file-path>
 ```
 
-### License
 
+### License
 Licensed under the [GNU General Public License v3.0](https://github.com/enseidler/ts-scanner/blob/master/LICENSE).
