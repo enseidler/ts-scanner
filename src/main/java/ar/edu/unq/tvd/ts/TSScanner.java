@@ -7,6 +7,7 @@ public class TSScanner {
 	
 	private static String MAP_COMMAND = "map";
 	private static String PAT_COMMAND = "pat";
+	private static String LEN_COMMAND = "len";
 	
 	public static void main(String[] args) throws Exception {
 		String command;
@@ -21,6 +22,8 @@ public class TSScanner {
 				map(filePath);
 			} else if(command.equals(PAT_COMMAND)) {
 				pat(filePath);
+			} else if(command.equals(LEN_COMMAND)) {
+				len(filePath);
 			} else {
 				System.out.println("Please choose a valid action before file path:");
 				System.out.println("              map");
@@ -33,6 +36,20 @@ public class TSScanner {
 	}
 
 	
+	private static void len(String stream) throws Exception {
+		InputStream input = getInputStream(stream);
+		byte[] buffer = new byte[188];
+		
+		int len = 0;
+		
+		while(readPacket(input, buffer)) {
+			len++;
+		}
+			
+		System.out.println("Packages amount of " + "\"" + stream + "\"" + ": " + len);
+	}
+
+
 	private static void pat(String stream) throws Exception {
 		InputStream input = getInputStream(stream);
 		byte[] buffer = new byte[188];
@@ -93,6 +110,7 @@ public class TSScanner {
 		} else {
 			mapSyncPacket();
 		}
+		System.out.println("");
 	}
 
 	private static boolean isPATPacket(byte[] buffer) throws Exception {
