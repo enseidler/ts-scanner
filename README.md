@@ -5,7 +5,7 @@ With ``TSScanner`` you'll be able to analyze and detect certain parts of the "TS
 ***
 
 
-###Requirements
+### Requirements
 - Java 1.5 (or newer)
 
 
@@ -24,15 +24,15 @@ With ``TSScanner`` you'll be able to analyze and detect certain parts of the "TS
 
 
 ### Old fashion way
-- Mapping ts packages visually
 ``` shell
-  java -jar TSScanner.jar map <file-path>
+  java -jar TSScanner.jar <command> <file-path>
 ```
 
-- Showing PAT table
-``` shell
-  java -jar TSScanner.jar pat <file-path>
-```
+
+### Commands
+- **map:** visualization of packages *(since v1.0.0)*
+- **pat:** PAT table request *(since v1.1.0)*
+- **len:** length of ts file, given by amount of packages *(since v1.1.2)*
 
 
 ### License
