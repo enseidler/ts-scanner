@@ -2,7 +2,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>ar.edu.unq.tvd</groupId>
   <artifactId>ts-scanner</artifactId>
-  <version>1.2.3-SNAPSHOT</version>
+  <version>1.4.4-SNAPSHOT</version>
   <dependencies>
   	<dependency>
   		<groupId>commons-io</groupId>
