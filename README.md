@@ -30,9 +30,11 @@ With ``TSScanner`` you'll be able to analyze and detect certain parts of the "TS
 
 
 ### Commands
-- **map:** visualization of packages *(since v1.0.0)*
-- **pat:** PAT table request *(since v1.1.0)*
-- **len:** length of ts file, given by amount of packages *(since v1.1.2)*
+- **-map:** visualization of packages *(since v1.0.0)*
+- **-pat:** PAT table request *(since v1.1.0)*
+- **-len:** length of ts file, given by amount of packages *(since v1.1.2)*
+- **-extract:video:** copy each video PES packet to new ts files *(since v1.4.4)*
+- **-extract:audio:** copy each audio PES packet to new ts files *(since v1.4.4)*
 
 
 ### License
